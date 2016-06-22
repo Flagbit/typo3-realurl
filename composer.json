@@ -28,6 +28,16 @@
     "suggest": {
       "typo3-ter/static-info-tables": ">=6.2.0"
     },
+    "autoload": {
+        "classmap": [
+            ""
+        ],
+        "exclude-from-classmap": [
+            "Tests",
+            "tests",
+            "class.ext_update.php"
+        ]
+    },
     "authors": [
         {
             "name": "Dmitry Dulepov",
