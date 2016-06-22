@@ -113,6 +113,19 @@ class tx_realurl_tcemain {
 	}
 
 	/**
+	 * @param array $params
+	 * @param \TYPO3\CMS\Core\DataHandling\DataHandler $pObj
+	 */
+	public function clearCachePostProcess($params, $pObj) {
+		if (isset($params['cacheCmd']) && $params['cacheCmd'] === 'all') {
+			/** @noinspection PhpUndefinedMethodInspection */
+			$GLOBALS['TYPO3_DB']->exec_TRUNCATEquery('tx_realurl_urldecodecache');
+			/** @noinspection PhpUndefinedMethodInspection */
+			$GLOBALS['TYPO3_DB']->exec_TRUNCATEquery('tx_realurl_urlencodecache');
+		}
+	}
+
+	/**
 	 * Removes unique alias in case if the record is deleted from the table
 	 *
 	 * @param string $command
